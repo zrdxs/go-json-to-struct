@@ -37,6 +37,7 @@ func main() {
 
 	finalResult := BuildStruct(strs)
 	fmt.Println(finalResult)
+
 }
 
 func DefineValuesType(jsonMap map[string]interface{}, structBuilder StructBuild, strs *[]StructBuild) {
@@ -60,7 +61,7 @@ func DefineValuesType(jsonMap map[string]interface{}, structBuilder StructBuild,
 				DefineValuesType(m, childStruct, strs)
 			}
 
-		} else if reflect.TypeOf(value).Kind() == reflect.Map {
+		} else if value != nil && reflect.TypeOf(value).Kind() == reflect.Map {
 			childStruct := StructBuild{
 				Name: strings.Title(key),
 			}
